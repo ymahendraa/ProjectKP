@@ -1,1 +1,52 @@
-<p>device-details works!</p>
+<div *ngIf="currentDevice" class="edit-form">
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Edit Device</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="col-md-4">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Device Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="submit-form">
+                        <div class="form-group">
+                            <label for="name">Device Name</label>
+                            <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            [(ngModel)]="currentDevice.name"
+                            name="name"
+                            />
+                        </div>
+                            <button (click)="updateDevice()" class="btn btn-success btn-sm">Update</button>
+
+                            <button (click)="deleteDevice()" class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </div>
+            </div>
+            
+            <p> {{ message }} </p>
+        
+            <div *ngIf="!currentDevice">
+            <h4>Cannot access this device</h4>
+            </div>
+        </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>

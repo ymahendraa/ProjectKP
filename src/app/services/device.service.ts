@@ -27,7 +27,7 @@ export class DeviceService {
   }
 
   delete(id){
-    return this.http.delete(`${baseUrl}/${{id}}`);
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 
   deleteAll(){

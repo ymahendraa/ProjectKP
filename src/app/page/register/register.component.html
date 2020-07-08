@@ -13,28 +13,37 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="submit-form">
+      <div class="col-md-4">
         <div *ngIf="!submitted">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              required
-              [(ngModel)]="device.name"
-              name="name"
-            />
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Device Information</h3>
+            </div>
+            <div class="card-body">
+              <div class="submit-form">
+                  <div class="form-group">
+                    <label for="name">Device Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      required
+                      [(ngModel)]="device.name"
+                      name="name"
+                    />
+                  </div>
+                  <button (click)="saveDevice()" class="btn btn-success">Submit</button>
+              </div>
+            </div>
           </div>
-      
-          <button (click)="saveDevice()" class="btn btn-success">Submit</button>
         </div>
-      
+        
         <div *ngIf="submitted">
           <h4>You submitted successfully!</h4>
           <button class="btn btn-success" (click)="newDevice()">Add</button>
         </div>
       </div>
+      
     </section>
     <!-- /.content -->
   </div>
