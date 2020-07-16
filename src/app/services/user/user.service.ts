@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8090/api/devices';
+const baseUrl = 'http://localhost:8090/api/users';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceService {
+export class UserService {
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +35,6 @@ export class DeviceService {
   }
 
   findByName(name){
-    return this.http.get(`${baseUrl}?name=${name}`);
+    return this.http.get(`${baseUrl}?user_name=${name}`);
   }
 }

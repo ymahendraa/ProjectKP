@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceService } from 'src/app/services/device.service';
+import { DeviceService } from 'src/app/services/device/device.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -35,7 +35,7 @@ export class DeviceDetailsComponent implements OnInit {
   }
 
   updateDevice(){
-    this.deviceService.update(this.currentDevice.id, this.currentDevice)
+    this.deviceService.update(this.currentDevice.device_id, this.currentDevice)
       .subscribe(
         response => {
           console.log(response);
@@ -47,11 +47,11 @@ export class DeviceDetailsComponent implements OnInit {
   }
 
   deleteDevice(){
-    this.deviceService.delete(this.currentDevice.id)
+    this.deviceService.delete(this.currentDevice.device_id)
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/devices']);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           console.log(error);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceService } from 'src/app/services/device.service';
+import { DeviceService } from 'src/app/services/device/device.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -11,15 +12,25 @@ export class MainMenuComponent implements OnInit {
   devices:any;
   currentDevice = null;
   currentIndex = -1;
-  name = '';
-  id = '';
-
-  constructor(private deviceService: DeviceService) { }
+  device_name = '';
+  
+  users:any;
+  currentUser = null;
+  currentUIndex = -1;
+  user_name = '';
+  
+  
+  constructor(
+    private deviceService: DeviceService,
+    private userService : UserService) { }
 
   ngOnInit(): void {
     this.retrieveDevices();
+    this.retrieveUsers();
   }
 
+  //Method for manage devices
+  
   retrieveDevices(){
     this.deviceService.getAll()
       .subscribe(
@@ -32,7 +43,7 @@ export class MainMenuComponent implements OnInit {
         });
   }
 
-  refreshList(){
+  refreshDList(){
     this.retrieveDevices();
     this.currentDevice = null;
     this.currentIndex = -1;
@@ -56,7 +67,7 @@ export class MainMenuComponent implements OnInit {
   }
 
   searchDevice(){
-    this.deviceService.findByName(this.name)
+    this.deviceService.findByName(this.device_name)
       .subscribe(
         data => {
           this.devices = data;
@@ -66,4 +77,55 @@ export class MainMenuComponent implements OnInit {
           console.log(error);
         });
   }
-}
+
+  // Method for manage users
+
+  retrieveUsers(){
+    this.userService.getAll()
+      .subscribe(
+        data => {
+          this.users = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  refreshUList(){
+    this.retrieveUsers();
+    this.currentUser = null;
+    this.currentUIndex = -1;
+  }
+
+  setActiveUser(user, index){
+    this.currentUser = user;
+    this.currentUIndex = index;
+  }
+
+  removeAllUsers(){
+    this.userService.deleteAll()
+      .subscribe(
+        response => {
+          console.log(response);
+          this.retrieveUsers;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  searchUser(){
+    this.userService.findByName(this.user_name)
+      .subscribe(
+        data => {
+          this.users = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+    }
+  }
+
+

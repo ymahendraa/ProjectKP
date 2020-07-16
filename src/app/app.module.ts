@@ -10,6 +10,8 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
 import { DeviceDetailsComponent } from './page/device-details/device-details.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { RegisterUserComponent } from './page/register-user/register-user.component';
+import { UserDetailsComponent } from './page/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     NotFoundComponent,
     DeviceDetailsComponent,
+    RegisterUserComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,18 +31,25 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     RouterModule.forRoot([
       { path: '',
-        redirectTo:'devices',
+        redirectTo:'dashboard',
         pathMatch:'full'
       },
-      { path: 'devices',
+      { path: 'dashboard',
         component: MainMenuComponent,
       },
-      { path: 'register',
+      { path: 'register-user',
+        component: RegisterUserComponent,
+      },
+      { path: 'register-device/:id',
         component: RegisterComponent 
       },
       {
-        path:'devices/:id',
+        path:'device/:id',
         component: DeviceDetailsComponent
+      },
+      {
+        path:'user/:id',
+        component: UserDetailsComponent
       },
       {
         path: "**",

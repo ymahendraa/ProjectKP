@@ -10,7 +10,8 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
           <!-- /.row -->
-        
+
+        <!--Device Table-->
           <div class="row">
             <div class="col-6">
               <div class="card">
@@ -21,10 +22,10 @@
                       <input type="text"
                       class="form-control"
                       placeholder="Search by name"
-                      [(ngModel)]="name"/>
-  
+                      [(ngModel)]="device_name"/>
+   
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default" (click)="searchDevice()"><i class="fas fa-search"></i></button>
+                        <button type="button" class="btn btn-default" (click)="searchDevice()"><i class="fas fa-search"></i></button>
                       </div>
                     </div>
                   </div>
@@ -37,12 +38,16 @@
                       <tr>
                         <th>ID</th>
                         <th>Device Name</th>
+                        <th>User ID</th>
+                        <th>temperature</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let device of devices;let i = index" [class.active]="i == currentIndex" (click)="setActiveDevice(device, i)">
-                        <td> {{device.id}} </td>
-                        <td > {{device.name}} </td>
+                        <td> {{device.device_id}} </td>
+                        <td> {{device.device_name}} </td>
+                        <td> {{device.user_id}} </td>
+                        <td> {{device.temperature}} &#8451;</td>
                         </tr>
                     </tbody>
                   </table>
@@ -57,14 +62,18 @@
               <div *ngIf="currentDevice">
                 <h4>Device Information</h4>
                 <div>
-                  <label><strong>ID:</strong></label> {{ currentDevice.id }}
+                  <label><strong>ID:</strong></label> {{ currentDevice.device_id }}
                 </div>
                 <div>
                   <label><strong>Name:</strong></label>
-                  {{ currentDevice.name }}
+                  {{ currentDevice.device_name }}
+                </div>
+                <div>
+                  <label><strong>Temperature:</strong></label>
+                  {{ currentDevice.temperature }}
                 </div>
               
-                <a class="badge badge-warning" routerLink="/devices/{{ currentDevice.id }}">
+                <a class="badge badge-warning" routerLink="/device/{{ currentDevice.device_id }}">
                   Edit
                 </a>
     
@@ -72,12 +81,82 @@
             </div>
 
           </div>
+
+          <!--User Table-->
+
+          <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Users list</h3> 
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text"
+                      class="form-control"
+                      placeholder="Search by name"
+                      [(ngModel)]="user_name"/>
+                      <div class="input-group-append">
+                        <button class="btn btn-default" type="button" (click)="searchUser()"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                
+                <div class="card-body table-responsive p-0 " style="height: 300px;">
+                  <table class="table table-head-fixed table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Phone Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users;let i = index" [class.active]="i == currentIndex" (click)="setActiveUser(user, i)">
+                        <td> {{user.user_id}} </td>
+                        <td > {{user.user_name}} </td>
+                        <td> {{user.phone_num}} </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+              <button class="m-3 btn btn-sm btn-danger" (click)="removeAllDevices()">Delete all users</button>
+            </div>
+
+            <div class="col-md-6">
+              <div *ngIf="currentUser">
+                <h4> User Information</h4>
+                <div>
+                  <label><strong>ID:</strong></label> {{ currentUser.user_id }}
+                </div>
+                <div>
+                  <label><strong>Name:</strong></label>
+                  {{ currentUser.user_name }}
+                </div>
+              <div>
+                <a class="badge badge-warning" routerLink="/user/{{ currentUser.user_id }}" style="margin-right: 5px;">
+                  Edit
+                </a>
+
+                <a class="badge badge-success" routerLink="/register-device/{{ currentUser.user_id }}">
+                  Add Device
+                </a>
+              </div>
+                
+    
+              </div>
+            </div>
+
+          </div>
+          
         
           <!-- /.row -->
         </div><!-- /.container-fluid -->
 
-        <!--Device infromation-->
-        
       </div>
       <!-- /.content-header -->
       

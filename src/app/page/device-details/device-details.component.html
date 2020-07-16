@@ -21,17 +21,19 @@
                 </div>
                 <div class="card-body">
                     <div class="submit-form">
-                        <div class="form-group">
-                            <label for="name">Device Name</label>
+                          <div class="form-group">
+                            <label for="device_name">Device Name</label>
                             <input
                             type="text"
                             class="form-control"
-                            id="name"
-                            [(ngModel)]="currentDevice.name"
-                            name="name"
+                            id="device_name"
+                            [(ngModel)]="currentDevice.device_name"
+                            name="device_name" 
                             />
+                          
+                            
                         </div>
-                            <button (click)="updateDevice()" class="btn btn-success btn-sm">Update</button>
+                            <button (click)="updateDevice()" class="btn btn-success btn-sm" style="margin-right: 5px;">Update</button>
 
                             <button (click)="deleteDevice()" class="btn btn-danger btn-sm">Delete</button>
                     </div>

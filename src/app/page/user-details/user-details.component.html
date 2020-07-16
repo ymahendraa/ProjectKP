@@ -1,0 +1,63 @@
+<div *ngIf="currentUser" class="edit-form">
+    <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Edit User</h1>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+      <div class="col-md-4">
+          <div class="card card-primary">
+              <div class="card-header">
+                  <h3 class="card-title">User Information</h3>
+              </div>
+              <div class="card-body">
+                  <div class="submit-form">
+                        <div class="form-group">
+                          <label for="user_name">User Name</label>
+                          <input
+                          type="text"
+                          class="form-control"
+                          id="user_name"
+                          [(ngModel)]="currentUser.user_name"
+                          name="user_name" 
+                          />
+
+                          <label for="phone_num">Phone Number</label>
+                          <input
+                          type="text"
+                          class="form-control"
+                          id="phone_num"
+                          [(ngModel)]="currentUser.phone_num"
+                          name="phone_num" 
+                          />
+                          
+                          
+                      </div>
+                          <button (click)="updateUser()" class="btn btn-success btn-sm" style="margin-right: 5px;">Update</button>
+
+                          <button (click)="deleteUser()" class="btn btn-danger btn-sm">Delete</button>
+                  </div>
+              </div>
+          </div>
+          
+          <p> {{ message }} </p>
+      
+          <div *ngIf="!currentUser">
+          <h4>Cannot access this device</h4>
+          </div>
+      </div>
+    
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</div>
