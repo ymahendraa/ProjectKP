@@ -12,20 +12,26 @@
           <!-- /.row -->
 
         <!--Device Table-->
-          <div class="row">
+        <div class="row">
+            
+
+          
+
+          <!--User Table-->
+
+        
             <div class="col-6">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Devices list</h3> 
+                  <h3 class="card-title">Users list</h3> 
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text"
                       class="form-control"
                       placeholder="Search by name"
-                      [(ngModel)]="device_name"/>
-   
+                      [(ngModel)]="user_name"/>
                       <div class="input-group-append">
-                        <button type="button" class="btn btn-default" (click)="searchDevice()"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-default" type="button" (click)="searchUser()"><i class="fas fa-search"></i></button>
                       </div>
                     </div>
                   </div>
@@ -37,17 +43,15 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Device Name</th>
-                        <th>User ID</th>
-                        <th>temperature</th>
+                        <th>User Name</th>
+                        <th>Phone Number</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let device of devices;let i = index" [class.active]="i == currentIndex" (click)="setActiveDevice(device, i)">
-                        <td> {{device.device_id}} </td>
-                        <td> {{device.device_name}} </td>
-                        <td> {{device.user_id}} </td>
-                        <td> {{device.temperature}} &#8451;</td>
+                      <tr *ngFor="let user of users;let i = index" [class.active]="i == currentUIndex" (click)="setActiveUser(user, i)">
+                        <td> {{user.user_id}} </td>
+                        <td > {{user.user_name}} </td>
+                        <td> {{user.phone_num}} </td>
                         </tr>
                     </tbody>
                   </table>
@@ -55,36 +59,34 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-              <button class="m-3 btn btn-sm btn-danger" (click)="removeAllDevices()">Delete all devices</button>
+              <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUsers()">Delete all users</button>
             </div>
 
             <div class="col-md-6">
-              <div *ngIf="currentDevice">
-                <h4>Device Information</h4>
+              <div *ngIf="currentUser">
+                <h4> User Information</h4>
                 <div>
-                  <label><strong>ID:</strong></label> {{ currentDevice.device_id }}
+                  <label><strong>ID:</strong></label> {{ currentUser.user_id }}
                 </div>
                 <div>
                   <label><strong>Name:</strong></label>
-                  {{ currentDevice.device_name }}
+                  {{ currentUser.user_name }}
                 </div>
-                <div>
-                  <label><strong>Temperature:</strong></label>
-                  {{ currentDevice.temperature }}
-                </div>
-              
-                <a class="badge badge-warning" routerLink="/device/{{ currentDevice.device_id }}">
+              <div>
+                <a class="badge badge-warning" routerLink="/user/{{ currentUser.user_id }}" style="margin-right: 5px;">
                   Edit
                 </a>
+
+                <a class="badge badge-success" routerLink="/register-device/{{ currentUser.user_id }}">
+                  Add Device
+                </a>
+              </div>
+                
     
               </div>
             </div>
 
           </div>
-
-          <!--User Table-->
-
-          
           
         
           <!-- /.row -->

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './page/register-user/register-user.component';
 import { UserDetailsComponent } from './page/user-details/user-details.component';
+import { UsersMenuComponent } from './page/users-menu/users-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UserDetailsComponent } from './page/user-details/user-details.component
     DeviceDetailsComponent,
     RegisterUserComponent,
     UserDetailsComponent,
+    UsersMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,9 @@ import { UserDetailsComponent } from './page/user-details/user-details.component
       },
       { path: 'dashboard',
         component: MainMenuComponent,
+      },
+      { path: 'users',
+        component: UsersMenuComponent,
       },
       { path: 'register-user',
         component: RegisterUserComponent,
