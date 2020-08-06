@@ -22,7 +22,9 @@
                       <input type="text"
                       class="form-control"
                       placeholder="Search by name"
-                      [(ngModel)]="device_name"/>
+                      [(ngModel)]="device_name"
+                      (keydown.enter)="searchDevice()"
+                      />
    
                       <div class="input-group-append">
                         <button type="button" class="btn btn-default" (click)="searchDevice()"><i class="fas fa-search"></i></button>

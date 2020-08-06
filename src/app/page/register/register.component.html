@@ -42,9 +42,10 @@
                       required
                       [(ngModel)]="device.device_name"
                       name="device_name"
+                      (keydown.enter)="saveDevice()"
                     />
                   </div>
-                  <button (click)="saveDevice()" class="btn btn-success">Submit</button>
+                  <button  type="submit" (click)="saveDevice()" class="btn btn-success">Submit</button>
               </div>
             </div>
           </div>

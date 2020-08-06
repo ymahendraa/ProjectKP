@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user/user.service';
 export class RegisterUserComponent implements OnInit {
   user = {
     user_name : '',
-    phone_num : ''
+    phone_num : '',
+    address : ''
   };
   submitted = false;
   
@@ -22,7 +23,8 @@ export class RegisterUserComponent implements OnInit {
   saveUser(){
     const data = {
       user_name : this.user.user_name,
-      phone_num : this.user.phone_num
+      phone_num : this.user.phone_num,
+      address : this.user.address
     };
 
     this.userService.create(data)
@@ -40,8 +42,10 @@ export class RegisterUserComponent implements OnInit {
     this.submitted =false;
     this.user = {
       user_name : '',
-      phone_num : ''
+      phone_num : '',
+      address : ''
     }
   }
+
 }
  

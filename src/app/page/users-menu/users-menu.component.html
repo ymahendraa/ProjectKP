@@ -45,6 +45,7 @@
                         <th>ID</th>
                         <th>User Name</th>
                         <th>Phone Number</th>
+                        <th>Address</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,7 @@
                         <td> {{user.user_id}} </td>
                         <td > {{user.user_name}} </td>
                         <td> {{user.phone_num}} </td>
+                        <td> {{user.address}} </td>
                         </tr>
                     </tbody>
                   </table>
@@ -69,8 +71,10 @@
                   <label><strong>ID:</strong></label> {{ currentUser.user_id }}
                 </div>
                 <div>
-                  <label><strong>Name:</strong></label>
-                  {{ currentUser.user_name }}
+                  <label><strong>Name:</strong></label> {{ currentUser.user_name }}
+                </div>
+                <div>
+                  <label><strong>Address:</strong></label> {{ currentUser.address }}
                 </div>
               <div>
                 <a class="badge badge-warning" routerLink="/user/{{ currentUser.user_id }}" style="margin-right: 5px;">
