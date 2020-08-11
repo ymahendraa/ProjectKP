@@ -1,3 +1,4 @@
+<div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -34,6 +35,17 @@
                       disabled
                     />
 
+                    <label for="device_name">User Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="user_name"
+                      required
+                      [(ngModel)]="currentUser.user_name"
+                      name="username"
+                      disabled
+                    />
+
                     <label for="device_name">Device Name</label>
                     <input
                       type="text"
@@ -44,6 +56,7 @@
                       name="device_name"
                       (keydown.enter)="saveDevice()"
                     />
+
                   </div>
                   <button  type="submit" (click)="saveDevice()" class="btn btn-success">Submit</button>
               </div>
@@ -61,3 +74,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+</div>
