@@ -13,8 +13,6 @@ export class MainMenuComponent implements OnInit {
   currentIndex = -1;
   device_name = '';
   
-  
-  
   constructor(private deviceService: DeviceService) { }
 
   ngOnInit(): void {
